@@ -27,6 +27,8 @@ class Student:
         print(f"Hello! I'm {self.name} {self.last_name} and my index is {self.index}")
 
     def calculate_average(self) -> float:
+        if len(self.marks) == 0:
+            raise ZeroDivisionError("No marks available to calculate average.")
         return sum(self.marks) / len(self.marks)
 
 
