@@ -12,7 +12,7 @@ def main() -> None:
     print("2^p = 1 << p")
 
     try:
-        user_input = input("\nEnter exponent p to calculate 2^p (or press Enter to skip): ")
+        user_input = input("\nEnter exponent p to calculate 2^p: ")
 
         if user_input.strip():
             exponent = int(user_input)

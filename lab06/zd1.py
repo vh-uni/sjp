@@ -49,9 +49,9 @@ def test_func3(input_string):
 
 def main() -> None:
     input_string = "2,5"
-    test_func1(input_string)
-    test_func2(input_string)
-    test_func3(input_string)
+    test_func1(input_string) # i dont know this error, sorry..
+    test_func2(input_string) # cannot do it :(
+    test_func3(input_string) # i dont know this name :(
 
 
 
