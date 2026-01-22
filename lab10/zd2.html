@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let text = "“Pan Wołodyjowski” przedstawia losy pana Michała – najlepszej szabli Rzeczpospolitej";
+
+        let subSeqIndex = text.search("szabli");
+        let textLength = text.length
+        let newText = text.replace("najlepszej", "pierwszej")
+
+        console.log(`Długść ciągu znaków - ${textLength}`);
+        console.log(`Indeks podciągu "szabli" - ${subSeqIndex}`);
+        console.log(`Zmieniony napis:\n${newText}`)
+    </script>
+</body>
+</html>
