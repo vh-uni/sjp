@@ -1,0 +1,46 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Konwerter liczb</title>
+</head>
+<body>
+    <form>
+        <label>Podaj liczbę:</label><br>
+        <input type="text" id="inputNumber"><br><br>
+
+        <label>Wybierz konwersję:</label><br>
+        <select id="conversionType">
+            <option value="dec2bin">Dziesiętny → Binarny</option>
+            <option value="bin2dec">Binarny → Dziesiętny</option>
+        </select><br><br>
+
+        <button type="button" id="convertBtn">Konwertuj</button>
+
+        <p>Wynik: <span id="result"></span></p>
+    </form>
+
+    <script>
+        document.getElementById("convertBtn").addEventListener("click", function() {
+            const input = document.getElementById("inputNumber").value;
+            const type = document.getElementById("conversionType").value;
+            const result = document.getElementById("result");
+
+            if (type === "dec2bin") {
+                const decimal = parseInt(input, 10);
+                if (isNaN(decimal)) {
+                    result.textContent = "Błąd: podaj poprawną liczbę dziesiętną";
+                } else {
+                    result.textContent = decimal.toString(2);
+                }
+            } else if (type === "bin2dec") {
+                if (!/^[01]+$/.test(input)) {
+                    result.textContent = "Błąd: podaj poprawną liczbę binarną (tylko 0 i 1)";
+                } else {
+                    result.textContent = parseInt(input, 2);
+                }
+            }
+        });
+    </script>
+</body>
+</html>

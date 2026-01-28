@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Form Validation</title>
+    </head>
+    <body>
+        <form name="formularz">
+            <input type="text" name="tekst" id="textfield" onkeyup="validateText()" />
+            <label id="valLabel"></label>
+            <input type="checkbox" name="zaznacz" onchange="validateCheckBox()" />
+        </form>
+        <script>
+            function validateText() {
+                const val1 = document.forms["formularz"]["tekst"].value; // Access for element by name
+                const label = document.getElementById("valLabel");
+                const reg = /^[a-zA-Z]{3,}$/; // Matches strings with at least 3 alphabetic characters
+                if (!reg.test(val1)) {
+                    label.innerHTML = "Niepoprawne!";
+                } else {
+                    label.innerHTML = ""; // Clear the label if validation passes
+                }
+            }
+            function validateCheckBox() {
+                const label = document.getElementById("valLabel");
+                const isChecked = document.forms["formularz"]["zaznacz"].checked;
+                if (isChecked) {
+                    label.style.backgroundColor = "#ffff00"; // Yellow background
+                } else {
+                    label.style.backgroundColor = "#ffffff"; // White background
+                }
+            }
+        </script>
+    </body>
+</html>

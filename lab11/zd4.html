@@ -1,0 +1,18 @@
+<html>
+<head></head>
+<body>
+    <h1 id="naglowek">Najedź na mnie myszą!</h1>
+
+    <script>
+        const naglowek = document.getElementById("naglowek");
+
+        naglowek.addEventListener("mouseenter", function() {
+            naglowek.style.color = "red";
+        });
+
+        naglowek.addEventListener("mouseleave", function() {
+            naglowek.style.color = "";
+        });
+    </script>
+</body>
+</html>

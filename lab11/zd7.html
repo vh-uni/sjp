@@ -1,0 +1,89 @@
+<html>
+<head>
+    <style>
+        .error { color: red; }
+        .success { color: green; }
+        .field-error { border: 2px solid red; }
+        .field-success { border: 2px solid green; }
+    </style>
+</head>
+<body>
+    <form id="studentForm">
+        <label>Imię:</label><br>
+        <input type="text" id="imie"><br>
+        <span id="imieMsg"></span><br><br>
+
+        <label>Nazwisko:</label><br>
+        <input type="text" id="nazwisko"><br>
+        <span id="nazwiskoMsg"></span><br><br>
+
+        <label>Email (format PBS: iminaz001@pbs.edu.pl):</label><br>
+        <input type="text" id="email"><br>
+        <span id="emailMsg"></span><br><br>
+
+        <button type="button" id="validateBtn">Sprawdź dane</button>
+
+        <p id="result"></p>
+    </form>
+
+    <script>
+        document.getElementById("validateBtn").addEventListener("click", function() {
+            const imie = document.getElementById("imie");
+            const nazwisko = document.getElementById("nazwisko");
+            const email = document.getElementById("email");
+            const result = document.getElementById("result");
+
+            // Regex dla imienia (tylko litery, min 2 znaki)
+            const imieRegex = /^[A-Za-zĄĆĘŁŃÓŚŹŻąćęłńóśźż]{2,}$/;
+            // Regex dla nazwiska (tylko litery, min 2 znaki)
+            const nazwiskoRegex = /^[A-Za-zĄĆĘŁŃÓŚŹŻąćęłńóśźż]{2,}$/;
+            // Regex dla emailu PBS (iminaz001@pbs.edu.pl)
+            const emailRegex = /^[a-z]{3}[a-z]{3}\d{3}@pbs\.edu\.pl$/;
+
+            let isValid = true;
+
+            if (imieRegex.test(imie.value)) {
+                imie.className = "field-success";
+                document.getElementById("imieMsg").textContent = "Poprawne";
+                document.getElementById("imieMsg").className = "success";
+            } else {
+                imie.className = "field-error";
+                document.getElementById("imieMsg").textContent = "Niepoprawne imię";
+                document.getElementById("imieMsg").className = "error";
+                isValid = false;
+            }
+
+            if (nazwiskoRegex.test(nazwisko.value)) {
+                nazwisko.className = "field-success";
+                document.getElementById("nazwiskoMsg").textContent = "Poprawne";
+                document.getElementById("nazwiskoMsg").className = "success";
+            } else {
+                nazwisko.className = "field-error";
+                document.getElementById("nazwiskoMsg").textContent = "Niepoprawne nazwisko";
+                document.getElementById("nazwiskoMsg").className = "error";
+                isValid = false;
+            }
+
+            if (emailRegex.test(email.value)) {
+                email.className = "field-success";
+                document.getElementById("emailMsg").textContent = "Poprawny format emailu PBS";
+                document.getElementById("emailMsg").className = "success";
+            } else {
+                email.className = "field-error";
+                document.getElementById("emailMsg").textContent = "Niepoprawny format (wymagany: iminaz001@pbs.edu.pl)";
+                document.getElementById("emailMsg").className = "error";
+                isValid = false;
+            }
+
+
+            if (isValid) {
+                result.textContent = "Wszystkie dane są poprawne!";
+                result.className = "success";
+            } else {
+                result.textContent = "Formularz zawiera błędy!";
+                result.className = "error";
+            }
+        });
+    </script>
+</body>
+</html>

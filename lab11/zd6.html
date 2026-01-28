@@ -1,0 +1,18 @@
+<html>
+<head></head>
+<body>
+    <img id="obrazek" src="obrazek1.jpg" alt="Obrazek" width="500" height="500">
+
+    <script>
+        const img = document.getElementById("obrazek");
+
+        img.addEventListener("mouseenter", function() {
+            img.src = "obrazek2.jpg";
+        });
+
+        img.addEventListener("mouseleave", function() {
+            img.src = "obrazek1.jpg";
+        });
+    </script>
+</body>
+</html>

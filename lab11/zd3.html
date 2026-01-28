@@ -1,0 +1,45 @@
+<html>
+<head>
+    <style>
+        #myBtn {
+            padding: 20px 40px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+    </style>
+</head>
+<body>
+    <button id="myBtn">Kliknij mnie</button>
+    <p id="status">Status: brak akcji</p>
+
+    <script>
+        const btn = document.getElementById("myBtn");
+        const status = document.getElementById("status");
+
+        // Naciśnięcie przycisku
+        btn.addEventListener("mousedown", function() {
+            btn.style.backgroundColor = "red";
+            status.textContent = "Status: przycisk naciśnięty";
+        });
+
+        // Zwolnienie przycisku
+        btn.addEventListener("mouseup", function() {
+            btn.style.backgroundColor = "green";
+            status.textContent = "Status: przycisk zwolniony";
+        });
+
+        // Najechanie na przycisk
+        btn.addEventListener("mouseenter", function() {
+            btn.style.backgroundColor = "yellow";
+            status.textContent = "Status: kursor nad przyciskiem";
+        });
+
+        // Wyjechanie kursorem poza przycisk
+        btn.addEventListener("mouseleave", function() {
+            btn.style.backgroundColor = "";
+            status.textContent = "Status: kursor poza przyciskiem";
+        });
+    </script>
+</body>
+</html>

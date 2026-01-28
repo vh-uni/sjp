@@ -1,0 +1,67 @@
+<html>
+<head>
+    <style>
+        .match { border: 2px solid green; }
+        .no-match { border: 2px solid red; }
+        .message { margin-top: 10px; font-weight: bold; }
+        .success { color: green; }
+        .error { color: red; }
+    </style>
+</head>
+<body>
+    <form id="passwordForm">
+        <label>Hasło:</label><br>
+        <input type="password" id="password1"><br><br>
+
+        <label>Powtórz hasło:</label><br>
+        <input type="password" id="password2"><br><br>
+
+        <button type="button" id="submitBtn">Sprawdź</button>
+
+        <div id="matchStatus" class="message"></div>
+        <div id="result" class="message"></div>
+    </form>
+
+    <script>
+        const password1 = document.getElementById("password1");
+        const password2 = document.getElementById("password2");
+        const matchStatus = document.getElementById("matchStatus");
+        const result = document.getElementById("result");
+
+        // Sprawdzanie zgodności
+        function checkMatch() {
+            if (password1.value === password2.value && password1.value !== "") {
+                password1.className = "match";
+                password2.className = "match";
+                matchStatus.textContent = "Hasła są zgodne";
+                matchStatus.className = "message success";
+            } else {
+                password1.className = "no-match";
+                password2.className = "no-match";
+                matchStatus.textContent = password1.value === "" && password2.value === "" ? "" : "Hasła nie są zgodne";
+                matchStatus.className = "message error";
+            }
+        }
+
+        password1.addEventListener("keyup", checkMatch);
+        password2.addEventListener("keyup", checkMatch);
+
+        // Walidacja hasła
+        document.getElementById("submitBtn").addEventListener("click", function() {
+            // Regex: min 8 znaków, wielka litera, mała litera, cyfra, znak specjalny
+            const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/;
+
+            if (password1.value !== password2.value) {
+                result.textContent = "Hasła nie są identyczne!";
+                result.className = "message error";
+            } else if (!passwordRegex.test(password1.value)) {
+                result.textContent = "Hasło musi zawierać min. 8 znaków, wielką i małą literę, cyfrę oraz znak specjalny (!@#$%^&*)";
+                result.className = "message error";
+            } else {
+                result.textContent = "Hasło poprawne!";
+                result.className = "message success";
+            }
+        });
+    </script>
+</body>
+</html>
